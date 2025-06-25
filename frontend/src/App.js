@@ -6,7 +6,7 @@ import Generate from "./components/Generate";
 import Predict from "./components/Predict";
 import Capture from "./components/Capture";
 import Landing from "./components/Landing"; // Import the Landing component
-
+import ProtectedRoute from "./middleware/protected";
 const App = () => (
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH0_DOMAIN} // Use environment variable for Auth0 domain
@@ -18,10 +18,10 @@ const App = () => (
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} /> {/* Update the root route */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/generate" element={<Generate />} />
-        <Route path="/predict" element={<Predict />} />
-        <Route path="/capture" element={<Capture />} />
+        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/generate" element={<ProtectedRoute><Generate /></ProtectedRoute>} />
+        <Route path="/predict" element={<ProtectedRoute><Predict /></ProtectedRoute>} />
+        <Route path="/capture" element={<ProtectedRoute><Capture /></ProtectedRoute>} />
       </Routes>
     </Router>
   </Auth0Provider>

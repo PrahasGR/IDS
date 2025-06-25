@@ -109,4 +109,5 @@ for epoch in epoch_iterator:
 
 logging.info("Training completed. Saving generator...")
 torch.save(generator.state_dict(), config.MODEL_PATH)
+print('DONE')
 logging.info("Generator saved successfully.")

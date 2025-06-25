@@ -1,9 +1,14 @@
 import os
 
-DATA_PATH = r'C:\Users\Vishruth V Srivatsa\OneDrive\Desktop\IDS\backend\data\raw\KDDTrain+.csv'
-MODEL_PATH = r'C:\Users\Vishruth V Srivatsa\OneDrive\Desktop\IDS\backend\src\models\gan_generator.pth'
-TRANSFORMER_PATH = r'C:\Users\Vishruth V Srivatsa\OneDrive\Desktop\IDS\backend\src\models\data_transformer.pkl'
-DISCRETE_COLUMNS = ['tcp', 'ftp_data', 'SF', 'normal']
+DATA_PATH = r'C:\Users\Prahas\Desktop\ids2\backend\data\raw\KDDTrain+.csv'
+MODEL_PATH = r'C:\Users\Prahas\Desktop\ids2\backend\src\models\gan_generator.pth'
+TRANSFORMER_PATH = r'C:\Users\Prahas\Desktop\ids2\backend\src\models\data_transformer.pkl'
+DISCRETE_COLUMNS = [
+    'protocol_type',    # e.g. 'tcp','udp','icmp'
+    'service',          # e.g. 'ftp_data','http','smtp',…
+    'flag',             # e.g. 'SF','REJ','RSTO',…
+    'class'             # your label column (normal vs neptune vs …)
+]
 BATCH_SIZE = 500
 EPOCHS = 1
 LATENT_DIM = 128
@@ -16,14 +21,13 @@ WEIGHT_DECAY = 1e-6
 GRADIENT_PENALTY = 10
 DEVICE = 'cpu'
 
-OUTPUT_PATH = r"C:\Users\Vishruth V Srivatsa\OneDrive\Desktop\IDS\backend\src\IDS\output"
-MODEL_SAVE_PATH = r"C:\Users\Vishruth V Srivatsa\OneDrive\Desktop\IDS\backend\src\models"
+OUTPUT_PATH = r"C:\Users\Prahas\Desktop\ids2\backend\src\IDS\output"
+MODEL_SAVE_PATH = r"C:\Users\Prahas\Desktop\ids2\backend\src\models"
 MAPPING_SAVE_PATH = os.path.join(MODEL_SAVE_PATH, "label_mapping.json")
 PREPROCESSOR_SAVE_PATH = os.path.join(MODEL_SAVE_PATH, "preprocessor.pkl")
 IDS_BATCH_SIZE = 32
 TRAIN_RATIO = 0.8
 TEST_RATIO = 0.2
-EPOCHS = 1
 LEARNING_RATE = 0.001
 DEVICE = 'cpu'
 

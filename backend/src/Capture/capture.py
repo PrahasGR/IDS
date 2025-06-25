@@ -3,7 +3,7 @@ import logging
 
 def capture_packets_tshark(capture_duration):
     try:
-        command = f'"C:\\Program Files\\Wireshark\\tshark.exe" -i Wi-Fi -a duration:{capture_duration} -w "C:\\Users\\Vishruth V Srivatsa\\OneDrive\\Desktop\\IDS\\backend\\src\\models\\capture.pcap"'
+        command = f'"C:\\Program Files\\Wireshark\\tshark.exe" -i Wi-Fi -a duration:{capture_duration} -w "C:\\Users\\Prahas\\Desktop\\ids2\\backend\\src\\models\\capture.pcap"'
         subprocess.run(command, shell=True, check=True)
     except subprocess.CalledProcessError as e:
         logging.error(f"Capture error: {e}")
