@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Constants
 RIGHT_SKEWED = ['0', '491', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '0.10', '0.11', '0.12', '0.13', '0.14', '0.15', '0.16', '0.18', '2', '2.1', '0.00', '0.00.1', '0.00.2']
 LEFT_SKEWED = ['20', '150', '1.00']
-MODEL_SAVE_PATH = r"C:/Users/Vishruth V Srivatsa/OneDrive/Desktop/IDS/src/models"
+MODEL_SAVE_PATH = r"C:\Users\Prahas\Desktop\ids2\backend\src\models"
 PREPROCESSOR_SAVE_PATH = os.path.join(MODEL_SAVE_PATH, "preprocessor.pkl")
 MAPPING_SAVE_PATH = os.path.join(MODEL_SAVE_PATH, "label_mapping.json")
 DEVICE = "cpu"
@@ -62,7 +62,7 @@ def load_model(model_class, model_path, device, *args):
         logging.error(f"Error loading model {model_class.__name__}: {e}")
         raise
 
-def predict_new_data(new_df, model_save_path, preprocessor_save_path, mapping_save_path, device='cpu'):
+def predict_new_data(new_df, model_save_path, preprocessor_save_path, mapping_save_path, device='cpu',return_indices: bool = False):
     try:
         # Load Preprocessor
         preprocessor = load_preprocessor(preprocessor_save_path)

@@ -10,7 +10,7 @@ DISCRETE_COLUMNS = [
     'class'             # your label column (normal vs neptune vs …)
 ]
 BATCH_SIZE = 500
-EPOCHS = 1
+EPOCHS = 10
 LATENT_DIM = 128
 GEN_HIDDEN_LAYERS = (256, 256)
 DISC_HIDDEN_LAYERS = (256, 256)

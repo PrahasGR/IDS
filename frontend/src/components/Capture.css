@@ -100,3 +100,19 @@ input {
 .download-button:hover {
   background-color: #0056b3; /* Darker shade on hover */
 }
+.download-link {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 18px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.download-link:hover {
+  background-color: #138496;
+}

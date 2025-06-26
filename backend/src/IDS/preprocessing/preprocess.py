@@ -36,18 +36,25 @@ class Preprocessor:
             logging.error(f"Error loading training data: {e}")
             raise
 
-    def load_test_data(self, df: pd.DataFrame, label_col: str) -> None:
+    def load_test_data(self, df: pd.DataFrame, label_col: Optional[str] = None) -> None:
         logging.info("Loading test data...")
         try:
-            if label_col not in df.columns:
-                raise ValueError(f"Label column '{label_col}' not found in the dataset.")
-            self.test_df = df.drop(columns=[label_col]).copy()
-            self.test_labels = df[label_col]
+            if label_col is not None and label_col in df.columns:
+                # drop and store labels if present
+                self.test_labels = df[label_col]
+                self.test_df = df.drop(columns=[label_col]).copy()
+            else:
+                # no labels: just copy everything
+                self.test_labels = None
+                self.test_df = df.copy()
+
+            # clean up infinities
             self.test_df.replace([np.inf, -np.inf], np.nan, inplace=True)
             logging.info(f"Test data loaded successfully with shape: {self.test_df.shape}")
         except Exception as e:
             logging.error(f"Error loading test data: {e}")
             raise
+
 
     def handle_missing_values(self, df: pd.DataFrame) -> pd.DataFrame:
         logging.info("Handling missing values...")
